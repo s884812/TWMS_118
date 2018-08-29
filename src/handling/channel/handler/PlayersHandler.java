@@ -1073,8 +1073,10 @@ public class PlayersHandler {
         int type = slea.readByte();
         if (type == 0) { // 角色訊息
             String charmessage = slea.readMapleAsciiString();
-            c.getPlayer().setcharmessage(charmessage);
-            //System.err.println("SetCharMessage");
+            if (CharMessage.length() < 25) {
+                    c.getPlayer().setCharMessage(CharMessage);
+                }
+            break;
         } else if (type == 1) { // 表情
             int expression = slea.readByte();
             c.getPlayer().setexpression(expression);
